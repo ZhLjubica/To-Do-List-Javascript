@@ -63,7 +63,7 @@ function backToTasks() {
       addItemTodo(value);
     }
     for (let j = 0; j < data.completed.length; j++){
-      let value = data.completed[i];
+      let value = data.completed[j];
       addItemTodo(value);
     }  
     }
@@ -131,8 +131,8 @@ function completeItem() {
 function addItemTodo(text, completed) {
    let list =(completed)? document.getElementById('completed'): document.getElementById('todo');
 
-   let item = document.createElement('li');
-   item.innerText = text;
+   let items = document.createElement('li');
+   items.innerText = text;
    
    let buttons = document.createElement('div');
    buttons.classList.add('buttons');
@@ -150,8 +150,8 @@ function addItemTodo(text, completed) {
 
    buttons.appendChild(remove);
    buttons.appendChild(complete);
-   item.appendChild(buttons);
-   list.appendChild(item);
+   items.appendChild(buttons);
+   list.appendChild(items);
 
     document.getElementById("item").value = "";
 
@@ -165,3 +165,28 @@ function addItemTodo(text, completed) {
 // node.appendChild(textnode);
 // document.getElementById('todo').appendChild(node);
 // }
+
+
+//filter
+let itemList = document.getElementById('todo');
+let filter = document.getElementById('filter');
+filter.addEventListener('keyup', filterItems);
+
+
+function filterItems(e){
+   let text = e.target.value.toLowerCase();
+   let items = itemList.getElementsByTagName('li');
+
+   console.log(items);
+
+   Array.from(items).forEach(function (item) {
+      let itemName = item.firstChild.textContent;
+      // console.log(itemName);
+
+      if (itemName.toLowerCase().indexOf(text) !=-1) {
+         item.style.display = 'block';
+      }else{
+         item.style.display = 'none';
+      }
+   })
+}

@@ -10,9 +10,23 @@
     margin: 5% auto;
 }
 .main h1 {
-    text-align: center;
+    text-indent: 10px;
     padding-bottom: 5vh;
-    font-size: 35px;
+    font-size: 45px;
+    text-align: center;
+    display: inline-block;
+    
+}
+ #filter {
+    /* margin: 0 auto; */
+    /* display: flex; */
+    float: right;
+    width: 40%;
+    padding: 5px;
+    margin-bottom: 10px;
+    background-color:#b8e994;
+    border-radius: 10px;
+
 }
 
 header {
